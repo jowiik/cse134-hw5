@@ -14,6 +14,25 @@
   --lead: 1.2rem;
   --hero-min: 35dvh;
   --header-bg: #ffffff;
+
+  /* NEW: Project card CSS variables */
+  --project-card-bg: #fff;
+  --project-card-border: 1px solid rgba(0,0,0,.1);
+  --project-card-radius: 0.6rem;
+  --project-card-padding: clamp(.9rem, .6rem + 1vw, 1.25rem);
+  --project-card-gap: clamp(.9rem, .6rem + 1vw, 1.25rem);
+  --project-card-shadow: none;
+  --project-card-heading-color: #0b1220;
+  --project-card-text-color: #0b1220;
+  --project-card-muted-color: #5a6472;
+  --project-card-link-color: #0a66c2;
+  --project-media-bg: #f4f6f8;
+  --project-media-radius: 0.45rem;
+  --project-media-flex: 0 0 min(22rem, 38dvw);
+  --project-tag-border: 1px solid rgba(0,0,0,.18);
+  --project-tag-radius: 0.35rem;
+  --project-tag-padding: .25em .6em;
+  --project-tag-size: .85rem;
 }
 
 html { font-size: 105%; }
@@ -35,6 +54,16 @@ body[data-theme="dark"] {
   --brand: #3b82f6;
   --brand-ink: #2563eb;
   --header-bg: #1f2937;
+
+  /* UPDATED: Dark theme project card variables */
+  --project-card-bg: #1f2937;
+  --project-card-border: 1px solid rgba(255,255,255,.1);
+  --project-card-heading-color: #f8fbf8;
+  --project-card-text-color: #f8fbf8;
+  --project-card-muted-color: #9ca3af;
+  --project-card-link-color: #3b82f6;
+  --project-media-bg: #374151;
+  --project-tag-border: 1px solid rgba(255,255,255,.18);
 }
 
 /* Layout wrappers */
@@ -495,7 +524,7 @@ ul.tight li { margin: .35rem 0; }
   transform: translateY(0.3rem);
 }
 
-/* Projects layout — simple & consistent */
+/* UPDATED: Projects layout — supports custom <project-card> elements */
 .projects-list{
   display: grid;
   gap: clamp(1rem, 1vw + .5rem, 1.5rem);
@@ -504,13 +533,133 @@ ul.tight li { margin: .35rem 0; }
   list-style: none;
 }
 
+/* NEW: Style for custom element host */
+project-card {
+  display: block;
+}
+
+/* NEW: Styles for <project-card> custom element internals */
+project-card .card {
+  display: flex;
+  align-items: stretch;
+  gap: var(--project-card-gap);
+  background: var(--project-card-bg);
+  border: var(--project-card-border);
+  border-radius: var(--project-card-radius);
+  padding: var(--project-card-padding);
+  box-shadow: var(--project-card-shadow);
+  transition: box-shadow 0.2s ease;
+}
+
+/* Responsive layout for project cards */
+@media (max-width: 56rem) {
+  project-card .card {
+    flex-direction: column;
+  }
+}
+
+@media (min-width: 56rem) {
+  project-card .card {
+    flex-direction: row;
+  }
+}
+
+/* Media (image) section */
+project-card .media {
+  flex: var(--project-media-flex);
+  margin: 0;
+  border-radius: var(--project-media-radius);
+  overflow: hidden;
+  background: var(--project-media-bg);
+  display: grid;
+  place-items: center;
+}
+
+project-card .media picture {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+project-card .media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  aspect-ratio: 16 / 10;
+  display: block;
+}
+
+/* Content section */
+project-card .body {
+  flex: 1 1 24rem;
+  display: grid;
+  gap: .6rem;
+  align-content: start;
+}
+
+project-card h2 {
+  margin: 0;
+  font-size: clamp(1.1rem, 1rem + .5vw, 1.45rem);
+  color: var(--project-card-heading-color);
+  font-family: inherit;
+}
+
+project-card .description {
+  margin: 0;
+  line-height: 1.65;
+  color: var(--project-card-text-color);
+}
+
+/* Tags */
+project-card .tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .4rem .5rem;
+  padding: 0;
+  margin: .1rem 0;
+  list-style: none;
+}
+
+project-card .tag {
+  font-size: var(--project-tag-size);
+  padding: var(--project-tag-padding);
+  border: var(--project-tag-border);
+  border-radius: var(--project-tag-radius);
+  color: var(--project-card-muted-color);
+}
+
+/* Links */
+project-card .links {
+  display: flex;
+  gap: .6rem;
+  margin: .2rem 0 0;
+}
+
+project-card .links a {
+  text-decoration: none;
+  color: var(--project-card-link-color);
+  font-weight: 700;
+  transition: text-decoration 0.2s ease;
+}
+
+project-card .links a:hover {
+  text-decoration: underline;
+}
+
+/* Hide empty sections */
+project-card .tags:empty,
+project-card .links:empty {
+  display: none;
+}
+
+/* Legacy support for non-custom-element cards (if any) */
 .project-card{
   display: flex;
   align-items: stretch;
   gap: clamp(.9rem, .6rem + 1vw, 1.25rem);
-  background: #fff;
-  border: 1px solid rgba(0,0,0,.1);
-  border-radius: .6rem;
+  background: var(--project-card-bg, #fff);
+  border: var(--project-card-border, 1px solid rgba(0,0,0,.1));
+  border-radius: var(--project-card-radius, .6rem);
   padding: clamp(.9rem, .6rem + 1vw, 1.25rem);
 }
 

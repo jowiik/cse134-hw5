@@ -26,67 +26,40 @@
     <main class="site-main">
       <section class="about-section" aria-labelledby="projects">
 
+        <!-- NEW: Using custom <project-card> elements -->
         <ul class="projects-list" role="list">
           <!-- Sea Otter Savvy -->
-          <li class="project-card">
-            <figure class="project-media">
-              <img src="seaottersavvy-icon.jpg" alt="Sea Otter Savvy mobile app map view" />
-            </figure>
-            <div class="project-body">
-              <h3 class="project-title">Sea Otter Savvy (Blueprint)</h3>
-              <p class="project-desc">
-                Cross-platform wildlife conservation app with GIS overlays for nearby sightings. Built in
-                React Native + Expo; implemented real-time map layers and streamlined release workflow for iOS/Android.
-              </p>
-              <ul class="project-meta">
-                <li class="tag">React Native</li>
-                <li class="tag">TypeScript</li>
-                <li class="tag">Firebase</li>
-              </ul>
-              <p class="project-links">
-              </p>
-            </div>
-          </li>
+          <project-card
+            data-title="Sea Otter Savvy (Blueprint)"
+            data-image="seaottersavvy-icon.jpg"
+            data-alt="Sea Otter Savvy mobile app map view showing wildlife sightings and GIS overlays"
+            data-desc="Cross-platform wildlife conservation app with GIS overlays for nearby sightings. Built in React Native + Expo; implemented real-time map layers and streamlined release workflow for iOS/Android."
+            data-tags="React Native, TypeScript, Firebase"
+            data-link="https://medium.com/@ucscblueprint/sea-otter-savvy-mobile-app-project-lead-perspective-d12a0e5d92bc"
+            data-link-label="Medium Article">
+          </project-card>
 
           <!-- Concard -->
-          <li class="project-card">
-            <figure class="project-media">
-              <img src="concard-icon.png" alt="Concard business card editor canvas" />
-            </figure>
-            <div class="project-body">
-              <h3 class="project-title">Concard — Business Card Editor</h3>
-              <p class="project-desc">
-                Web editor for designing cards with export to PNG/JPG/JSON and CI/CD via GitHub Actions.
-                Custom UI components and layout tools focused on fast iteration.
-              </p>
-              <ul class="project-meta">
-                <li class="tag">HTML/CSS/JS</li>
-              </ul>
-              <p class="project-links">
-                <a href="https://cse110-sp25-group29.github.io/cse110-sp25-group29/source/assets/homepage.html" class="button-link">Demo</a>
-              </p>
-            </div>
-          </li>
+          <project-card
+            data-title="Concard — Business Card Editor"
+            data-image="concard-icon.png"
+            data-alt="Concard business card editor canvas with design tools and export options"
+            data-desc="Web editor for designing cards with export to PNG/JPG/JSON and CI/CD via GitHub Actions. Custom UI components and layout tools focused on fast iteration."
+            data-tags="HTML/CSS/JS"
+            data-link="https://cse110-sp25-group29.github.io/cse110-sp25-group29/source/assets/homepage.html"
+            data-link-label="View Demo">
+          </project-card>
 
           <!-- Spotify MC -->
-          <li class="project-card">
-            <figure class="project-media">
-              <img src="spotify-icon.jpeg" alt="Spotify controller interface" />
-            </figure>
-            <div class="project-body">
-              <h3 class="project-title">Spotify MC</h3>
-              <p class="project-desc">
-                Lightweight controller using Spotify’s Web API to surface the currently playing track and quick actions,
-                reducing phone checks.
-              </p>
-              <ul class="project-meta">
-                <li class="tag">Python</li>
-                <li class="tag">Spotify API</li>
-              </ul>
-              <p class="project-links">
-              </p>
-            </div>
-          </li>
+          <project-card
+            data-title="Spotify MC"
+            data-image="spotify-icon.jpeg"
+            data-alt="Spotify controller interface displaying currently playing track and playback controls"
+            data-desc="Lightweight controller using Spotify's Web API to surface the currently playing track and quick actions, reducing phone checks."
+            data-tags="Python, Spotify API"
+            data-link="https://github.com/jowiik/spotify-mc/tree/main"
+            data-link-label="GitHub Repository">
+          </project-card>
         </ul>
       </section>
     </main>
@@ -94,6 +67,9 @@
   <footer class="site-footer">
     <p>&copy; 2025 Joseph Kim</p>
   </footer>
+
+  <!-- NEW: Load custom element -->
+  <script type="module" src="project-card.js"></script>
 
   <script>
     // Theme toggle functionality
