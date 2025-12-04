@@ -1,0 +1,28 @@
+{
+  "remoteProjects": [
+    {
+      "id": "sea-otter-savvy",
+      "title": "Sea Otter Savvy (Blueprint)",
+      "image": "seaottersavvy-icon.jpg",
+      "desc": "Cross-platform wildlife conservation app built with React Native + Expo, featuring GIS overlays and real-time mapping.",
+      "link": "https://medium.com/@ucsdcblueprint/sea-otter-savvy",
+      "tags": "React Native, TypeScript, Firebase"
+    },
+    {
+      "id": "concard",
+      "title": "Concard — Business Card Editor",
+      "image": "concard-icon.png",
+      "desc": "In-browser business card editor supporting PNG/JPEG/JSON export and a customizable design canvas.",
+      "link": "https://cse110-sp25-group29.github.io/cse110-sp25-group29/source/assets/homepage.html",
+      "tags": "HTML/CSS/JS"
+    },
+    {
+      "id": "spotify-mc",
+      "title": "Spotify MC",
+      "image": "spotify-icon.jpeg",
+      "desc": "Python tool that uses the Spotify Web API and text-to-speech to announce currently playing tracks.",
+      "link": "https://github.com/JosephDKim/spotify-mc",
+      "tags": "Python, Spotify API"
+    }
+  ]
+}

@@ -524,6 +524,37 @@ ul.tight li { margin: .35rem 0; }
   transform: translateY(0.3rem);
 }
 
+/* Projects controls (Load Local / Load Remote buttons) */
+.projects-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-block: 1rem;
+  align-items: center;
+}
+
+.projects-controls button {
+  padding: 0.45rem 1rem;
+  border-radius: 999px;
+  border: 1px solid var(--border-subtle, rgba(0, 0, 0, 0.1));
+  background: var(--project-card-bg, #ffffff);
+  color: var(--fg, #0b1220);
+  font-size: 0.9rem;
+  font-family: inherit;
+  cursor: pointer;
+  transition: background 0.15s ease, transform 0.1s ease;
+}
+
+.projects-controls button:hover {
+  background: var(--brand, #0b84ff);
+  color: #fff;
+  transform: translateY(-1px);
+}
+
+.projects-controls button:active {
+  transform: translateY(0);
+}
+
 /* UPDATED: Projects layout — supports custom <project-card> elements */
 .projects-list{
   display: grid;
@@ -737,4 +768,157 @@ project-card .links:empty {
 @keyframes fade-in {
   from { opacity: 0; }
   to { opacity: 1; }
+}
+
+/* CRUD Page Styles */
+.crud-info {
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+}
+
+.crud-form {
+  display: grid;
+  gap: 1rem;
+  max-width: 36rem;
+}
+
+.crud-form .form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.crud-form label {
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.crud-form input,
+.crud-form textarea {
+  font: inherit;
+  padding: 0.7rem;
+  border: 1px solid rgba(0,0,0,.2);
+  border-radius: 0.4rem;
+  width: 100%;
+  transition: border-color 0.2s ease;
+}
+
+.crud-form input:focus,
+.crud-form textarea:focus {
+  outline: 2px solid var(--brand, #0b84ff);
+  outline-offset: 2px;
+  border-color: var(--brand, #0b84ff);
+}
+
+.crud-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+}
+
+.crud-btn {
+  padding: 0.6rem 1.25rem;
+  border: none;
+  border-radius: 0.4rem;
+  font-weight: 700;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: transform 0.1s ease, background-color 0.15s ease;
+}
+
+.crud-btn:hover {
+  transform: translateY(-1px);
+}
+
+.crud-btn:active {
+  transform: translateY(0);
+}
+
+.crud-btn-create {
+  background: #22c55e;
+  color: #fff;
+}
+
+.crud-btn-create:hover {
+  background: #16a34a;
+}
+
+.crud-btn-update {
+  background: var(--brand, #0b84ff);
+  color: #fff;
+}
+
+.crud-btn-update:hover {
+  background: var(--brand-ink, #0a66c2);
+}
+
+.crud-btn-delete {
+  background: #ef4444;
+  color: #fff;
+}
+
+.crud-btn-delete:hover {
+  background: #dc2626;
+}
+
+.crud-status {
+  margin-top: 1rem;
+  padding: 0.75rem 1rem;
+  border-radius: 0.4rem;
+  font-size: 0.95rem;
+  min-height: 1rem;
+}
+
+.crud-status:empty {
+  display: none;
+}
+
+.crud-status-success {
+  background: #dcfce7;
+  border: 1px solid #86efac;
+  color: #166534;
+}
+
+.crud-status-error {
+  background: #fee2e2;
+  border: 1px solid #fca5a5;
+  color: #991b1b;
+}
+
+.crud-project-list {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0;
+  display: grid;
+  gap: 0.5rem;
+}
+
+.crud-project-item {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 1rem;
+  padding: 0.75rem 1rem;
+  background: var(--project-card-bg, #fff);
+  border: var(--project-card-border, 1px solid rgba(0,0,0,.1));
+  border-radius: 0.4rem;
+}
+
+.crud-project-item code {
+  font-size: 0.85rem;
+  background: rgba(0,0,0,.05);
+  padding: 0.15em 0.4em;
+  border-radius: 0.25rem;
+  color: var(--muted, #5a6472);
+}
+
+.crud-project-tags {
+  font-size: 0.8rem;
+  color: var(--muted, #5a6472);
+}
+
+.crud-empty {
+  color: var(--muted, #5a6472);
+  font-style: italic;
 }

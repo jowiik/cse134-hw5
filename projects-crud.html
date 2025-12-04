@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Joseph Kim - Manage Projects</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Manage projects - Create, Update, Delete">
+  <link rel="icon" href="favicon.ico">
+  <link rel="author" href="humans.txt">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="site">
+  <header class="site-header">
+    <h1>Joseph Kim</h1>
+    <nav aria-label="Primary navigation" class="site-nav">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="resume.html">Resume</a>
+      <a href="projects.html">Projects</a>
+      <a href="projects-crud.html" aria-current="page">Manage</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <button type="button" class="theme-toggle" aria-pressed="false" aria-label="Toggle theme">🌙</button>
+
+  <main class="site-main">
+    <section class="about-section">
+      <h2 class="section-title">Manage Projects (CRUD)</h2>
+      <hr class="rule">
+      <p class="crud-info">
+        Use this form to create, update, or delete projects stored in localStorage. 
+        Changes will appear on the <a href="projects.html">Projects page</a> after clicking "Load Local".
+      </p>
+
+      <form id="crud-form" class="crud-form">
+        <div class="form-field">
+          <label for="project-id">ID (unique key) *</label>
+          <input type="text" id="project-id" name="id" required placeholder="e.g. my-project">
+        </div>
+
+        <div class="form-field">
+          <label for="project-title">Title</label>
+          <input type="text" id="project-title" name="title" placeholder="Project Title">
+        </div>
+
+        <div class="form-field">
+          <label for="project-image">Image filename</label>
+          <input type="text" id="project-image" name="image" placeholder="e.g. project-icon.png">
+        </div>
+
+        <div class="form-field">
+          <label for="project-alt">Alt text</label>
+          <input type="text" id="project-alt" name="alt" placeholder="Image description">
+        </div>
+
+        <div class="form-field">
+          <label for="project-desc">Description</label>
+          <textarea id="project-desc" name="desc" rows="3" placeholder="Short project description"></textarea>
+        </div>
+
+        <div class="form-field">
+          <label for="project-link">Link URL</label>
+          <input type="url" id="project-link" name="link" placeholder="https://...">
+        </div>
+
+        <div class="form-field">
+          <label for="project-tags">Tags (comma-separated)</label>
+          <input type="text" id="project-tags" name="tags" placeholder="e.g. React, TypeScript, Firebase">
+        </div>
+
+        <div class="crud-buttons">
+          <button type="button" id="btn-create" class="crud-btn crud-btn-create">Create</button>
+          <button type="button" id="btn-update" class="crud-btn crud-btn-update">Update</button>
+          <button type="button" id="btn-delete" class="crud-btn crud-btn-delete">Delete</button>
+        </div>
+      </form>
+
+      <p id="crud-status" class="crud-status"></p>
+
+      <hr class="rule">
+      <h3>Current Projects in localStorage</h3>
+      <ul id="crud-project-list" class="crud-project-list">
+        <!-- Projects will be listed here -->
+      </ul>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>&copy; 2025 Joseph Kim</p>
+  </footer>
+
+  <!-- Load custom element and CRUD logic -->
+  <script type="module" src="project-card.js"></script>
+  <script type="module" src="projects-crud.js"></script>
+
+  <script>
+    // Theme toggle functionality
+    const themeToggle = document.querySelector('.theme-toggle');
+    const body = document.body;
+
+    // Load saved theme
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'dark') {
+      body.dataset.theme = 'dark';
+      themeToggle.setAttribute('aria-pressed', 'true');
+      themeToggle.textContent = '☀️';
+    } else {
+      themeToggle.textContent = '🌙';
+    }
+
+    // Theme toggle click handler
+    themeToggle.addEventListener('click', () => {
+      try {
+        const isDark = body.dataset.theme === 'dark';
+        if (isDark) {
+          delete body.dataset.theme;
+          localStorage.setItem('theme', 'light');
+          themeToggle.setAttribute('aria-pressed', 'false');
+          themeToggle.textContent = '🌙';
+        } else {
+          body.dataset.theme = 'dark';
+          localStorage.setItem('theme', 'dark');
+          themeToggle.setAttribute('aria-pressed', 'true');
+          themeToggle.textContent = '☀️';
+        }
+      } catch (error) {
+        // Show error if theme switching fails
+        alert('Theme switching requires JavaScript to be enabled. Please enable JavaScript and try again.');
+        console.error('Theme switching failed:', error);
+      }
+    });
+
+    // View Transitions for navigation
+    document.addEventListener('click', (e) => {
+      const link = e.target.closest('a[href]');
+      if (!link) return;
+
+      // Skip external links and links with target="_blank"
+      if (link.hostname !== window.location.hostname || link.target === '_blank') return;
+
+      e.preventDefault();
+
+      if ('startViewTransition' in document) {
+        document.startViewTransition(() => {
+          window.location.href = link.href;
+        });
+      } else {
+        window.location.href = link.href;
+      }
+    });
+  </script>
+</body>
+</html>
+

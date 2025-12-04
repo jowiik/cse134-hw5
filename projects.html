@@ -17,6 +17,7 @@
       <a href="about.html">About</a>
       <a href="resume.html">Resume</a>
       <a href="projects.html" aria-current="page">Projects</a>
+      <a href="projects-crud.html">Manage</a>
       <a href="contact.html">Contact</a>
     </nav>
   </header>
@@ -26,40 +27,15 @@
     <main class="site-main">
       <section class="about-section" aria-labelledby="projects">
 
-        <!-- NEW: Using custom <project-card> elements -->
-        <ul class="projects-list" role="list">
-          <!-- Sea Otter Savvy -->
-          <project-card
-            data-title="Sea Otter Savvy (Blueprint)"
-            data-image="seaottersavvy-icon.jpg"
-            data-alt="Sea Otter Savvy mobile app map view showing wildlife sightings and GIS overlays"
-            data-desc="Cross-platform wildlife conservation app with GIS overlays for nearby sightings. Built in React Native + Expo; implemented real-time map layers and streamlined release workflow for iOS/Android."
-            data-tags="React Native, TypeScript, Firebase"
-            data-link="https://medium.com/@ucscblueprint/sea-otter-savvy-mobile-app-project-lead-perspective-d12a0e5d92bc"
-            data-link-label="Medium Article">
-          </project-card>
+        <!-- Controls for loading project data -->
+        <div class="projects-controls">
+          <button id="load-local-btn" type="button">Load Local</button>
+          <button id="load-remote-btn" type="button">Load Remote</button>
+        </div>
 
-          <!-- Concard -->
-          <project-card
-            data-title="Concard — Business Card Editor"
-            data-image="concard-icon.png"
-            data-alt="Concard business card editor canvas with design tools and export options"
-            data-desc="Web editor for designing cards with export to PNG/JPG/JSON and CI/CD via GitHub Actions. Custom UI components and layout tools focused on fast iteration."
-            data-tags="HTML/CSS/JS"
-            data-link="https://cse110-sp25-group29.github.io/cse110-sp25-group29/source/assets/homepage.html"
-            data-link-label="View Demo">
-          </project-card>
-
-          <!-- Spotify MC -->
-          <project-card
-            data-title="Spotify MC"
-            data-image="spotify-icon.jpeg"
-            data-alt="Spotify controller interface displaying currently playing track and playback controls"
-            data-desc="Lightweight controller using Spotify's Web API to surface the currently playing track and quick actions, reducing phone checks."
-            data-tags="Python, Spotify API"
-            data-link="https://github.com/jowiik/spotify-mc/tree/main"
-            data-link-label="GitHub Repository">
-          </project-card>
+        <!-- Project cards will be injected here by JavaScript -->
+        <ul class="projects-list" id="projects-list" role="list">
+          <!-- Project cards will be injected here by JavaScript -->
         </ul>
       </section>
     </main>
@@ -68,8 +44,9 @@
     <p>&copy; 2025 Joseph Kim</p>
   </footer>
 
-  <!-- NEW: Load custom element -->
+  <!-- Load custom element and page-specific logic -->
   <script type="module" src="project-card.js"></script>
+  <script type="module" src="projects-page.js"></script>
 
   <script>
     // Theme toggle functionality
